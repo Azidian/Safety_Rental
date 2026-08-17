@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+/* Safety Rent */
+.bg-brand-black {
+    background-color: #111111;
+}
+
+.bg-brand-orange {
+    background-color: #F26822;
+}
+
+.text-brand-orange {
+    color: #F26822;
+}
+
+.btn-nav-orange {
+    color: #F26822;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.btn-nav-orange:hover {
+    color: #ffffff;
+    background-color: #F26822;
+}
+
+.subtitleClient {
+    color: #F26822;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-nav-viewDetails-saveContact {
+    color: #ffffff;
+    background-color: #F26822;
+    font-weight: bold;
+}
