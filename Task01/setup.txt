@@ -1,0 +1,99 @@
+=============================================================================
+ GUÍA DE INSTALACIÓN - SAFETY RENTAL (Taller 01) 
+=============================================================================
+Desarrollado por: Isabella Ocampo Sánchez
+Clase principal abordada: Client (Cliente)
+
+¡Hola, compañer@! 
+He preparado esta guía detallada para que puedas ejecutar este proyecto 
+en tu computador sin ningún problema. Por favor, sigue los pasos en orden:
+
+-----------------------------------------------------------------------------
+PASO 1: UBICACIÓN Y APERTURA DEL PROYECTO
+-----------------------------------------------------------------------------
+1. Descomprime este archivo .zip.
+2. Abre la carpeta resultante (asegúrate de que adentro veas carpetas 
+   como 'app', 'public', 'routes', etc.).
+3. Abre tu Terminal o Consola de comandos EXACTAMENTE en esa carpeta.
+   (Ejemplo: Si usas Visual Studio Code, arrastra la carpeta al editor 
+   y abre una nueva terminal presionando Ctrl + ñ o yendo a Terminal > New Terminal).
+
+-----------------------------------------------------------------------------
+PASO 2: CONFIGURACIÓN DEL ENTORNO (.env)
+-----------------------------------------------------------------------------
+Laravel necesita un archivo de configuración para funcionar. Yo no lo incluí
+por seguridad (es una buena práctica), pero te dejé una plantilla:
+
+1. Busca el archivo llamado '.env.example' en la raíz del proyecto.
+2. Cópialo y pégalo ahí mismo, y cámbiale el nombre para que quede
+   única y exclusivamente como: .env
+   (Nota: Si Windows no te deja, en la terminal escribe: cp .env.example .env)
+
+-----------------------------------------------------------------------------
+PASO 3: PREPARAR LA BASE DE DATOS
+-----------------------------------------------------------------------------
+1. Abre tu gestor de base de datos local (phpMyAdmin, DBeaver, Laragon, etc.).
+2. Crea una base de datos totalmente vacía y llámala: safety_rental
+3. Ve al archivo '.env' que acabas de crear en el paso 2 y busca el 
+   bloque de conexión a la base de datos (línea 11 aprox). 
+4. Configúralo con TUS credenciales locales. Debe quedar así:
+
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306        <-- (OJO: Cambia a 3307 si usas un puerto diferente en MAMP/XAMPP)
+   DB_DATABASE=safety_rental
+   DB_USERNAME=root    <-- (Tu usuario, en XAMPP/Laragon suele ser 'root')
+   DB_PASSWORD=        <-- (Tu contraseña. En XAMPP déjalo vacío. En MAMP suele ser 'root')
+
+-----------------------------------------------------------------------------
+PASO 4: INSTALACIÓN DE DEPENDENCIAS (EL MOTOR)
+-----------------------------------------------------------------------------
+Como la carpeta 'vendor' es muy pesada, no se incluye en el .zip. 
+Para descargar el motor de Laravel, ejecuta en tu terminal:
+
+   composer install
+
+(Nota: Espera a que termine al 100%, puede tardar un minuto).
+
+-----------------------------------------------------------------------------
+PASO 5: LLAVES Y MIGRACIONES (LA MAGIA)
+-----------------------------------------------------------------------------
+1. Genera la llave de seguridad única del proyecto ejecutando:
+   
+   php artisan key:generate
+
+2. Construye las tablas de la base de datos (Ejecuta mis planos):
+   
+   php artisan migrate
+
+   (Nota: Si te pregunta "Would you like to create the database?", dile que Yes/Sí. 
+   Esto creará automáticamente la tabla 'clients' con sus tipos de datos correctos).
+
+-----------------------------------------------------------------------------
+PASO 6: ¡A CORRER EL PROYECTO!
+-----------------------------------------------------------------------------
+Ya está todo listo. Enciende el servidor local ejecutando:
+
+   php artisan serve
+
+Se te abrirá un enlace en la terminal (usualmente http://127.0.0.1:8000).
+Presiona Ctrl + Clic sobre el enlace para abrirlo en tu navegador.
+
+-----------------------------------------------------------------------------
+RUTAS PARA CALIFICAR EL TALLER
+-----------------------------------------------------------------------------
+Aquí tienes los enlaces directos para revisar cada requerimiento del taller:
+
+* Actividad 1 (Vista Inicial):    http://127.0.0.1:8000/
+* Actividad 2 y 3 (Formulario):   http://127.0.0.1:8000/clients/create
+* Actividad 4 (Listar 2 datos):   http://127.0.0.1:8000/clients
+* Actividad 5 y 6 (Ver y Borrar): Entra a la lista, haz clic en "View Details" 
+                                  y allí encontrarás toda la info y el botón Delete.
+
+FEATURE EXTRA (SISTEMA DE LOCALIZACIÓN):
+He implementado variables de entorno para idiomas. En la barra de navegación 
+(arriba a la izquierda) verás los botones "EN" (Inglés) y "ES" (Español). 
+Haz clic en ellos para ver cómo el sistema traduce toda la interfaz dinámicamente.
+
+¡Muchísimas gracias por tu tiempo revisando este proyecto!
+=============================================================================
