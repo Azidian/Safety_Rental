@@ -1,0 +1,165 @@
+SETUP - TALLER 01
+Online Store - Location Management
+Universidad EAFIT
+Arquitectura de Software
+
+
+1. REQUISITOS
+
+Para ejecutar el proyecto se necesita tener instalado:
+
+- PHP 8.3 o superior
+- Composer
+- Laravel 13
+- MySQL
+- Un navegador web
+
+
+2. INSTALAR DEPENDENCIAS
+
+Después de descomprimir el proyecto, abrir una terminal en la carpeta raíz del proyecto.
+
+Ejecutar:
+
+composer install
+
+
+3. CONFIGURACIÓN DEL ARCHIVO .ENV
+
+Crear el archivo .env a partir del archivo .env.example:
+
+Windows:
+
+copy .env.example .env
+
+Después generar la clave de la aplicación:
+
+php artisan key:generate
+
+
+4. CONFIGURACIÓN DE LA BASE DE DATOS
+
+El proyecto utiliza MySQL.
+
+En el archivo .env se deben configurar las credenciales de la base de datos local.
+
+Ejemplo:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelcourse
+DB_USERNAME=root
+DB_PASSWORD=
+
+
+La base de datos "laravelcourse" debe existir previamente en MySQL.
+
+Si el usuario de MySQL tiene una contraseña, esta debe especificarse en DB_PASSWORD.
+
+
+5. CREAR LAS TABLAS
+
+Después de configurar correctamente la conexión con MySQL, ejecutar las migraciones:
+
+php artisan migrate
+
+Esto creará las tablas necesarias para ejecutar el proyecto, incluyendo la tabla "locations" utilizada por el Taller 01.
+
+
+6. EJECUTAR EL PROYECTO
+
+Iniciar el servidor de desarrollo de Laravel con:
+
+php artisan serve
+
+Por defecto, el proyecto estará disponible en:
+
+http://127.0.0.1:8000
+
+
+7. RUTA INICIAL
+
+La ruta inicial para utilizar el Taller 01 es:
+
+http://127.0.0.1:8000/locations/menu
+
+Esta página corresponde al menú de Location Management y contiene las opciones principales del taller:
+
+- Create Location
+- List Locations
+
+
+8. FUNCIONALIDADES DEL TALLER
+
+Desde el menú se puede acceder a las siguientes funcionalidades:
+
+Crear una Location:
+
+/locations/create
+
+Listar Locations:
+
+/locations
+
+Ver una Location específica:
+
+/locations/{id}
+
+Eliminar una Location:
+
+La eliminación se realiza desde la vista de detalle de una Location mediante el botón "Delete Location".
+
+
+9. FLUJO PRINCIPAL
+
+El flujo esperado del taller es:
+
+/locations/menu
+        |
+        +--> /locations/create
+        |        |
+        |        +--> Crear Location
+        |
+        +--> /locations
+                 |
+                 +--> Ver ID de una Location
+                          |
+                          +--> /locations/{id}
+                                   |
+                                   +--> Delete Location
+
+
+10. VALIDACIÓN
+
+Los datos ingresados durante la creación de una Location son validados antes de almacenarse en la base de datos.
+
+Los campos requeridos son:
+
+- Name
+- Address
+- Headquarters
+- Phone
+- City
+
+El sistema también verifica que no exista previamente una Location con exactamente los mismos datos.
+
+
+11. NOTAS
+
+- No es necesario modificar archivos del código fuente para ejecutar el proyecto.
+- Se debe configurar únicamente el archivo .env con las credenciales locales de MySQL.
+- La base de datos debe estar disponible antes de ejecutar las migraciones.
+- Si se utiliza una instalación local de MySQL mediante XAMPP, WAMP, Laragon u otra herramienta equivalente, el servicio de MySQL debe estar iniciado.
+- El proyecto utiliza Laravel 13.24.0 y PHP 8.3.1 durante el desarrollo del taller.
+
+
+12. DETENER EL SERVIDOR
+
+Para detener el servidor de desarrollo, presionar:
+
+Ctrl + C
+
+en la terminal donde se está ejecutando:
+
+php artisan serve
