@@ -1,37 +1,37 @@
 @extends('layouts.reserve')
 
-@section('title', 'Reserve | Detalle')
+@section('title', 'Reserva | Detalle')
 
 @section('content')
     <section class="panel">
-        <h1>Detalle de Reserve #{{ $reserve->id }}</h1>
+        <h1>Detalle de la reserva #{{ $reserve->id }}</h1>
 
         <dl class="detail">
             <dt>ID</dt>
             <dd>{{ $reserve->id }}</dd>
 
-            <dt>Code</dt>
+            <dt>Código</dt>
             <dd>{{ $reserve->code }}</dd>
 
-            <dt>State</dt>
+            <dt>Estado</dt>
             <dd>{{ $reserve->state }}</dd>
 
-            <dt>Start date</dt>
+            <dt>Fecha de inicio</dt>
             <dd>{{ $reserve->startDate->format('Y-m-d') }}</dd>
 
-            <dt>End date</dt>
+            <dt>Fecha de finalización</dt>
             <dd>{{ $reserve->endDate->format('Y-m-d') }}</dd>
 
-            <dt>Creation date</dt>
+            <dt>Fecha de creación</dt>
             <dd>{{ $reserve->createAt->format('Y-m-d') }}</dd>
         </dl>
 
         <div class="actions">
             <a class="button secondary" href="{{ route('reserves.index') }}">Volver al listado</a>
-            <form method="POST" action="{{ route('reserves.destroy', $reserve) }}">
+            <form method="POST" action="{{ route('reserves.destroy', $reserve) }}" onsubmit="return confirm('¿Está seguro de que desea eliminar esta reserva?');">
                 @csrf
                 @method('DELETE')
-                <button class="button danger" type="submit">Eliminar Reserve</button>
+                <button class="button danger" type="submit">Eliminar reserva</button>
             </form>
         </div>
     </section>

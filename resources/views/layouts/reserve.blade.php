@@ -35,7 +35,7 @@
     <header>
         <div class="inner">
             <a href="{{ route('home') }}"><strong>Taller 01 - Reserve</strong></a>
-            <a href="{{ route('reserves.index') }}">Listar Reserves</a>
+            <a href="{{ route('reserves.index') }}">Ver reservas</a>
         </div>
     </header>
     <main>
